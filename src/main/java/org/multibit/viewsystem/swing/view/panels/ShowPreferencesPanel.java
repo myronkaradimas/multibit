@@ -63,6 +63,7 @@ import java.util.TreeSet;
 public class ShowPreferencesPanel extends JPanel implements Viewable, PreferencesDataProvider {
     private static final Logger log = LoggerFactory.getLogger(ShowPreferencesPanel.class);
 
+//next 2 rows are now obsolete
     private static final int LANGUAGE_CODE_VERTICAL_INSET = 2;
 
     private static final int LANGUAGE_CODE_IMAGE_HEIGHT = 20;
