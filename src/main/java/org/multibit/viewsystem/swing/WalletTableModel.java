@@ -30,13 +30,12 @@ import org.multibit.model.bitcoin.WalletTableData;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
-
 public class WalletTableModel extends AbstractTableModel {
 
     private static final long serialVersionUID = -937886012854496208L;
 
-    private static final Logger log = LoggerFactory.getLogger(WalletTableModel.class);
+    private static final Logger log = LoggerFactory
+            .getLogger(WalletTableModel.class);
 
     private ArrayList<String> headers;
 
@@ -45,15 +44,34 @@ public class WalletTableModel extends AbstractTableModel {
     private final Controller controller;
     private final BitcoinController bitcoinController;
 
+    int sumReceivedTransactions = 0, sumSentTransactions = 0;
+
+    public int getSumReceivedTransactions() {
+        return sumReceivedTransactions;
+    }
+
+    public int getSumSentTransactions() {
+        return sumSentTransactions;
+    }
+
     public WalletTableModel(BitcoinController bitcoinController) {
         this.bitcoinController = bitcoinController;
         this.controller = this.bitcoinController;
 
         createHeaders();
 
-        walletData = this.bitcoinController.getModel().createWalletTableData(this.bitcoinController, this.bitcoinController.getModel().getActiveWalletFilename());
+        walletData = this.bitcoinController.getModel().createWalletTableData(
+                this.bitcoinController,
+                this.bitcoinController.getModel().getActiveWalletFilename());
+
+        if (walletData.size() > 0) {
+            sumSentTransactions = walletData.get(0).getTransaction()
+                    .getInputs().size();
+            sumReceivedTransactions = walletData.get(0).getTransaction()
+                    .getOutputs().size();
+        }
     }
-    
+
     @Override
     public Class<?> getColumnClass(int columnIndex) {
         if (columnIndex == 3 || columnIndex == 4) {
@@ -94,7 +112,8 @@ public class WalletTableModel extends AbstractTableModel {
 
         switch (column) {
         case 0: {
-            if (walletDataRow.getTransaction() != null && walletDataRow.getTransaction().getConfidence() != null) {
+            if (walletDataRow.getTransaction() != null
+                    && walletDataRow.getTransaction().getConfidence() != null) {
                 return walletDataRow.getTransaction();
             } else {
                 return null;
@@ -112,30 +131,38 @@ public class WalletTableModel extends AbstractTableModel {
         case 3:
             // Amount in BTC
             BigInteger debitAmount = walletDataRow.getDebit();
-            if (debitAmount != null && debitAmount.compareTo(BigInteger.ZERO) > 0) {
-                return controller.getLocaliser().bitcoinValueToString(debitAmount.negate(), false, true);
+            if (debitAmount != null
+                    && debitAmount.compareTo(BigInteger.ZERO) > 0) {
+                return controller.getLocaliser().bitcoinValueToString(
+                        debitAmount.negate(), false, true);
             }
 
             BigInteger creditAmount = walletDataRow.getCredit();
             if (creditAmount != null) {
-                return controller.getLocaliser().bitcoinValueToString(creditAmount, false, true);
+                return controller.getLocaliser().bitcoinValueToString(
+                        creditAmount, false, true);
             }
-            
-            return null;         
+
+            return null;
         case 4:
             // Amount in fiat
-            if (walletDataRow.getDebit() != null  && walletDataRow.getDebit().compareTo(BigInteger.ZERO) > 0) {
-                Money debitAmountFiat = CurrencyConverter.INSTANCE.convertFromBTCToFiat(walletDataRow.getDebit());
+            if (walletDataRow.getDebit() != null
+                    && walletDataRow.getDebit().compareTo(BigInteger.ZERO) > 0) {
+                Money debitAmountFiat = CurrencyConverter.INSTANCE
+                        .convertFromBTCToFiat(walletDataRow.getDebit());
                 if (debitAmountFiat != null) {
-                    return CurrencyConverter.INSTANCE.getFiatAsLocalisedString(debitAmountFiat.negated(), false, false);
+                    return CurrencyConverter.INSTANCE.getFiatAsLocalisedString(
+                            debitAmountFiat.negated(), false, false);
                 }
             }
 
-            Money creditAmountFiat = CurrencyConverter.INSTANCE.convertFromBTCToFiat(walletDataRow.getCredit());
+            Money creditAmountFiat = CurrencyConverter.INSTANCE
+                    .convertFromBTCToFiat(walletDataRow.getCredit());
             if (creditAmountFiat != null) {
-                return CurrencyConverter.INSTANCE.getFiatAsLocalisedString(creditAmountFiat, false, false);
+                return CurrencyConverter.INSTANCE.getFiatAsLocalisedString(
+                        creditAmountFiat, false, false);
             }
-            
+
             return "";
         default:
             return null;
@@ -152,29 +179,43 @@ public class WalletTableModel extends AbstractTableModel {
 
     public void recreateWalletData() {
         // Recreate the wallet data as the underlying wallet has changed.
-        walletData = this.bitcoinController.getModel().createActiveWalletData(this.bitcoinController);
+        walletData = this.bitcoinController.getModel().createActiveWalletData(
+                this.bitcoinController);
         fireTableDataChanged();
     }
 
     public void createHeaders() {
         headers = new ArrayList<String>();
         for (int j = 0; j < WalletTableData.COLUMN_HEADER_KEYS.length; j++) {
-            if ("sendBitcoinPanel.amountLabel".equals(WalletTableData.COLUMN_HEADER_KEYS[j])) {
-                String header = controller.getLocaliser().getString(WalletTableData.COLUMN_HEADER_KEYS[j]) + " (" + controller.getLocaliser().getString("sendBitcoinPanel.amountUnitLabel") + ")";
+            if ("sendBitcoinPanel.amountLabel"
+                    .equals(WalletTableData.COLUMN_HEADER_KEYS[j])) {
+                String header = controller.getLocaliser().getString(
+                        WalletTableData.COLUMN_HEADER_KEYS[j])
+                        + " ("
+                        + controller.getLocaliser().getString(
+                                "sendBitcoinPanel.amountUnitLabel") + ")";
                 headers.add(header);
             } else {
-                headers.add(controller.getLocaliser().getString(WalletTableData.COLUMN_HEADER_KEYS[j]));                
-            } 
+                headers.add(controller.getLocaliser().getString(
+                        WalletTableData.COLUMN_HEADER_KEYS[j]));
+            }
         }
         
+
         // Add in the converted fiat, if appropriate
         if (CurrencyConverter.INSTANCE.isShowingFiat()) {
-            CurrencyInfo currencyInfo = CurrencyConverter.INSTANCE.getCurrencyCodeToInfoMap().get(CurrencyConverter.INSTANCE.getCurrencyUnit().getCode());
-            String currencySymbol = CurrencyConverter.INSTANCE.getCurrencyUnit().getCode();
+            CurrencyInfo currencyInfo = CurrencyConverter.INSTANCE
+                    .getCurrencyCodeToInfoMap().get(
+                            CurrencyConverter.INSTANCE.getCurrencyUnit()
+                                    .getCode());
+            String currencySymbol = CurrencyConverter.INSTANCE
+                    .getCurrencyUnit().getCode();
             if (currencyInfo != null) {
                 currencySymbol = currencyInfo.getCurrencySymbol();
             }
-            String header = controller.getLocaliser().getString("sendBitcoinPanel.amountLabel") + " (" + currencySymbol + ")";
+            String header = controller.getLocaliser().getString(
+                    "sendBitcoinPanel.amountLabel")
+                    + " (" + currencySymbol + ")";
             headers.add(header);
         }
     }
