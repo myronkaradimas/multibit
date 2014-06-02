@@ -30,13 +30,13 @@ public final class ImageLoader {
     public static final String CANCEL_ICON_FILE = "/images/cancel.png";
     public static final String CHANGE_PASSWORD_ICON_FILE = "/images/lockChange.png";
     public static final String CHART_LINE_ICON_FILE = "/images/chartLine.png";
+    public static final String CHECK_PRIVATE_KEYS_ICON_FILE = "/images/checkKey.png";
     public static final String CLOSE_TAB_ICON_FILE = "/images/closeTab.png";
     public static final String CLOSE_WALLET_ICON_FILE = "/images/closeWallet.png";
     public static final String COPY_ICON_FILE = "/images/copy.png";
     public static final String CREATE_NEW_ICON_FILE = "/images/createNew.png";
     public static final String CROSS_ICON_FILE = "/images/cross.png";
     public static final String DELETE_ICON_FILE = "/images/delete.png";
-    public static final String DELETE_WALLET_ICON_FILE = "/images/deleteWallet.png";
     public static final String DELETE_ADDRESS_ICON_FILE = "/images/book_open_delete.png";
     public static final String EXCLAMATION_MARK_ICON_FILE = "/images/exclamationMark.png";
     public static final String EXPORT_PRIVATE_KEYS_ICON_FILE = "/images/exportKey.png";
@@ -78,6 +78,42 @@ public final class ImageLoader {
     public static final String WELCOME_ICON_FILE = "/images/welcome.png";
     public static final String YOUR_WALLETS_ICON_FILE = "/images/yourWallets.png";
     public static final String ZOOM_ICON_FILE = "/images/zoom.png";
+    
+    public static final String GREEK_FLAG_FILE = "/images/flag/flag_gr.png";
+    public static final String ENGLISH_FLAG_FILE = "/images/flag/enFlag.png";
+    public static final String SPANISH_FLAG_FILE = "/images/flag/flag_es.png";
+    public static final String FRENCH_FLAG_FILE = "/images/flag/france.png";
+    public static final String ITALIAN_FLAG_FILE = "/images/flag/italy.png";
+    public static final String FINLAND_FLAG_FILE = "/images/flag/finland_flag_16.png";
+    public static final String GERMAN_FLAG_FILE = "/images/flag/germany.png";
+    public static final String TURKISH_FLAG_FILE = "/images/flag/turkey-flag-icon.png";
+    public static final String HEBREW_FLAG_FILE = "/images/flag/he.png";
+    public static final String NORWAY_FLAG_FILE = "/images/flag/flag-norway.png";
+    public static final String RUSSIAN_FLAG_FILE = "/images/flag/ru.png";
+    public static final String SWEEDISH_FLAG_FILE = "/images/flag/icon-flag-sweden.png";
+    public static final String ROMANIAN_FLAG_FILE = "/images/flag/flagIcon_Romania.png";
+    public static final String PORTUGUESE_FLAG_FILE = "/images/flag/Portugal-Flag-icon.png";
+    public static final String JAPANEESE_FLAG_FILE = "/images/flag/japan-flag-icon.png";
+    public static final String KOREAN_FLAG_FILE = "/images/flag/korea.png";
+    public static final String NEDERLANDS_FLAG_FILE = "/images/flag/Netherlands-Flag-icon.png";
+    public static final String HUNGARY_FLAG_FILE = "/images/flag/hungary.png";
+    public static final String LATVIA_FLAG_FILE = "/images/flag/Latvia-flat-icon.png";
+    public static final String FARSI_FLAG_FILE = "/images/flag/farsi_flag.png";
+    public static final String CROATIAN_FLAG_FILE = "/images/flag/croatian_flag_16.png";
+    public static final String DENMARK_FLAG_FILE = "/images/flag/denmark_flag_16.png";
+    public static final String SLOVENIAN_FLAG_FILE = "/images/flag/rs.png";
+    public static final String SLOVAKIA_FLAG_FILE = "/images/flag/flag_sk.png";
+    public static final String ARABIAN_FLAG_FILE = "/images/flag/ar.png";
+    public static final String TAGALOG_FLAG_FILE = "/images/flag/tagalog.png";
+    public static final String POLISH_FLAG_FILE = "/images/flag/polish_flag.png";
+    public static final String THAI_FLAG_FILE = "/images/flag/th.png";
+    public static final String CHINEESE_FLAG_FILE = "/images/flag/china_flag_16.png";
+    public static final String CZECH_FLAG_FILE = "/images/flag/czech_flag.png";
+    
+    
+    
+ 
+
 
     /**
      * Utility class should not have a public constructor

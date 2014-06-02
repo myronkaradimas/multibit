@@ -43,8 +43,10 @@ import org.multibit.viewsystem.swing.view.ticker.TickerTableModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+
 import javax.swing.*;
 import javax.swing.UIManager.LookAndFeelInfo;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
@@ -426,12 +428,15 @@ public class ShowPreferencesPanel extends JPanel implements Viewable, Preference
             String languageCode = controller.getLocaliser().getString("showPreferencesPanel.languageCode." + (i + 1));
             String language = controller.getLocaliser().getString("showPreferencesPanel.language." + (i + 1));
 
+                     
+            
             LanguageData languageData = new LanguageData();
             languageData.languageCode = languageCode;
             languageData.language = language;
             languageData.image = createImageIcon(languageCode);
             languageData.image.setDescription(language);
             languageDataSet.add(languageData);
+            
         }
 
         Integer[] indexArray = new Integer[languageDataSet.size()];
@@ -684,10 +689,26 @@ public class ShowPreferencesPanel extends JPanel implements Viewable, Preference
         originalShowTicker = !Boolean.FALSE.toString().equals(controller.getModel().getUserPreference(ExchangeModel.TICKER_SHOW));
         originalExchange1 = controller.getModel().getUserPreference(ExchangeModel.TICKER_FIRST_ROW_EXCHANGE);
         originalCurrency1 = controller.getModel().getUserPreference(ExchangeModel.TICKER_FIRST_ROW_CURRENCY);
+        // Map MtGox to Bitstamp + USD
+        if (ExchangeData.MT_GOX_EXCHANGE_NAME.equalsIgnoreCase(originalExchange1)) {
+          originalExchange1 = ExchangeData.BITSTAMP_EXCHANGE_NAME;
+          controller.getModel().setUserPreference(ExchangeModel.TICKER_FIRST_ROW_EXCHANGE, ExchangeData.BITSTAMP_EXCHANGE_NAME);
+
+          originalCurrency1 = "USD";
+          controller.getModel().setUserPreference(ExchangeModel.TICKER_FIRST_ROW_CURRENCY, "USD");
+        }
         originalShowSecondRow = Boolean.TRUE.toString().equals(
                 controller.getModel().getUserPreference(ExchangeModel.TICKER_SHOW_SECOND_ROW));
         originalExchange2 = controller.getModel().getUserPreference(ExchangeModel.TICKER_SECOND_ROW_EXCHANGE);
         originalCurrency2 = controller.getModel().getUserPreference(ExchangeModel.TICKER_SECOND_ROW_CURRENCY);
+        // Map MtGox to Bitstamp
+        if (ExchangeData.MT_GOX_EXCHANGE_NAME.equalsIgnoreCase(originalExchange2)) {
+          originalExchange2 = ExchangeData.BITSTAMP_EXCHANGE_NAME;
+          controller.getModel().setUserPreference(ExchangeModel.TICKER_SECOND_ROW_EXCHANGE, ExchangeData.BITSTAMP_EXCHANGE_NAME);
+
+          originalCurrency2 = "USD";
+          controller.getModel().setUserPreference(ExchangeModel.TICKER_SECOND_ROW_CURRENCY, "USD");
+        }
 
         MultiBitTitledPanel tickerPanel = new MultiBitTitledPanel(controller.getLocaliser().getString(
                 "showPreferencesPanel.ticker.title2"), ComponentOrientation.getOrientation(controller.getLocaliser().getLocale()));
@@ -1354,6 +1375,155 @@ public class ShowPreferencesPanel extends JPanel implements Viewable, Preference
         return tickerPanel;
     }
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    //Depending on the  each time, this method drags the proper flag icon
+    
+    
+    private ImageIcon createImageIcon(String text) {
+    	
+    	
+    	if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.1")){
+    		return ImageLoader.createImageIcon(ImageLoader.ENGLISH_FLAG_FILE);}
+    	
+    	else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.2")){
+    		return ImageLoader.createImageIcon(ImageLoader.SPANISH_FLAG_FILE);}
+    	
+    	else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.3")){
+    		return ImageLoader.createImageIcon(ImageLoader.RUSSIAN_FLAG_FILE);}
+    	
+    	else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.4")){
+    		return ImageLoader.createImageIcon(ImageLoader.SWEEDISH_FLAG_FILE);}
+    	
+    	else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.5")){
+    		return ImageLoader.createImageIcon(ImageLoader.NORWAY_FLAG_FILE);}
+    	
+    	else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.6")){
+    		return ImageLoader.createImageIcon(ImageLoader.ITALIAN_FLAG_FILE);}
+    	
+    	else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.7")){
+    		return ImageLoader.createImageIcon(ImageLoader.FRENCH_FLAG_FILE);}
+    	
+    	else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.8")){
+    		return ImageLoader.createImageIcon(ImageLoader.GERMAN_FLAG_FILE);}
+    	
+    	else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.9")){
+    		return ImageLoader.createImageIcon(ImageLoader.PORTUGUESE_FLAG_FILE);}
+    	
+    	else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.10")){
+    		return ImageLoader.createImageIcon(ImageLoader.SHAPE_PENTAGON_ICON_FILE);}
+    	
+    	else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.11")){
+    		return ImageLoader.createImageIcon(ImageLoader.THAI_FLAG_FILE);}
+    	
+    	else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.12")){
+    		return ImageLoader.createImageIcon(ImageLoader.NEDERLANDS_FLAG_FILE);}
+    	
+    	else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.13")){
+    		return ImageLoader.createImageIcon(ImageLoader.CHINEESE_FLAG_FILE);}
+    	
+    	else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.14")){
+    		return ImageLoader.createImageIcon(ImageLoader.JAPANEESE_FLAG_FILE);}
+    	
+    	else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.15")){
+    		return ImageLoader.createImageIcon(ImageLoader.ARABIAN_FLAG_FILE);}
+    	
+    	else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.16")){
+    		return ImageLoader.createImageIcon(ImageLoader.KOREAN_FLAG_FILE);}
+    	
+    	else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.17")){
+    		return ImageLoader.createImageIcon(ImageLoader.LATVIA_FLAG_FILE);}
+    	
+    	else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.18")){
+    		return ImageLoader.createImageIcon(ImageLoader.TURKISH_FLAG_FILE);}
+    	
+    	else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.19")){
+    		return ImageLoader.createImageIcon(ImageLoader.FINLAND_FLAG_FILE);}
+    	
+    	else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.20")){
+    		return ImageLoader.createImageIcon(ImageLoader.POLISH_FLAG_FILE);}
+    	
+    	else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.21")){
+    		return ImageLoader.createImageIcon(ImageLoader.CROATIAN_FLAG_FILE);}
+    	
+    	else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.22")){
+    		return ImageLoader.createImageIcon(ImageLoader.HUNGARY_FLAG_FILE);}
+    	
+    	else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.23")){
+    		return ImageLoader.createImageIcon(ImageLoader.GREEK_FLAG_FILE);}
+    	
+    	else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.24")){
+    		return ImageLoader.createImageIcon(ImageLoader.DENMARK_FLAG_FILE);}
+    	
+    	else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.25")){
+    		return ImageLoader.createImageIcon(ImageLoader.SHAPE_PENTAGON_ICON_FILE);}
+    	
+    	else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.26")){
+    		return ImageLoader.createImageIcon(ImageLoader.FARSI_FLAG_FILE);}
+    	
+    	else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.27")){
+    		return ImageLoader.createImageIcon(ImageLoader.HEBREW_FLAG_FILE);}
+    	
+    	else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.28")){
+    		return ImageLoader.createImageIcon(ImageLoader.SLOVAKIA_FLAG_FILE);}
+    	
+    	else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.29")){
+    		return ImageLoader.createImageIcon(ImageLoader.CZECH_FLAG_FILE);}
+    	
+    	else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.30")){
+    		return ImageLoader.createImageIcon(ImageLoader.SHAPE_PENTAGON_ICON_FILE);}
+    	
+    	else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.31")){
+    		return ImageLoader.createImageIcon(ImageLoader.SLOVENIAN_FLAG_FILE);}
+    	
+    	else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.32")){
+    		return ImageLoader.createImageIcon(ImageLoader.SHAPE_PENTAGON_ICON_FILE);}
+    	
+    	else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.33")){
+    		return ImageLoader.createImageIcon(ImageLoader.ROMANIAN_FLAG_FILE);}
+
+    	else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.34")){
+    		return ImageLoader.createImageIcon(ImageLoader.SHAPE_PENTAGON_ICON_FILE);}
+    	
+    	else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.35")){
+    		return ImageLoader.createImageIcon(ImageLoader.TAGALOG_FLAG_FILE);}
+    	
+    	else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.36")){
+    		return ImageLoader.createImageIcon(ImageLoader.SHAPE_PENTAGON_ICON_FILE);}
+    	
+    	else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.37")){
+    		return ImageLoader.createImageIcon(ImageLoader.SHAPE_PENTAGON_ICON_FILE);}
+    	
+    	
+    	
+    	
+    	
+    	else return ImageLoader.createImageIcon(ImageLoader.SHAPE_PENTAGON_ICON_FILE);
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     private void updateApiCode() {
         String apiCode = oerApiCodeTextField.getText();
         if (apiCode != null && !(WhitespaceTrimmer.trim(apiCode).length() == 0) && !apiCode.equals(controller.getModel().getUserPreference(ExchangeModel.OPEN_EXCHANGE_RATES_API_CODE))) {
@@ -1578,18 +1748,7 @@ public class ShowPreferencesPanel extends JPanel implements Viewable, Preference
         oerMessageLabel2.setEnabled(enableTickerSecondRow);
     }
 
-    private ImageIcon createImageIcon(String text) {
-        Font font = new Font("Dialog", Font.PLAIN, LANGUAGE_CODE_IMAGE_HEIGHT - 2 * LANGUAGE_CODE_VERTICAL_INSET);
 
-        BufferedImage bimg = new BufferedImage(LANGUAGE_CODE_IMAGE_WIDTH, LANGUAGE_CODE_IMAGE_HEIGHT, BufferedImage.TYPE_INT_RGB);
-        Graphics2D g2 = bimg.createGraphics();
-
-        g2.setColor(Color.WHITE);
-        g2.setFont(font);
-        g2.drawString(text, LANGUAGE_CODE_VERTICAL_INSET + 1, LANGUAGE_CODE_IMAGE_HEIGHT - 2 * LANGUAGE_CODE_VERTICAL_INSET);
-
-        return new ImageIcon(bimg);
-    }
 
     class LanguageComboBoxRenderer extends MultiBitLabel implements ListCellRenderer {
         private static final long serialVersionUID = -3301957214353702172L;
