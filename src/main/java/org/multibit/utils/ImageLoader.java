@@ -110,7 +110,13 @@ public final class ImageLoader {
     public static final String CHINEESE_FLAG_FILE = "/images/flag/china_flag_16.png";
     public static final String CZECH_FLAG_FILE = "/images/flag/czech_flag.png";
     
-    
+    public static final String INDIA_FLAG_FILE = "/images/flag/Flag_of_India.png";
+    public static final String ESPERANTO_FLAG_FILE = "/images/flag/Flag_of_Esperanto.png";
+    public static final String SERBIAN_FLAG_FILE = "/images/flag/Flag_of_Serbia2.png";
+    public static final String TAMIL_FLAG_FILE = "/images/flag/tamil.png";
+    public static final String SWAHILI_FLAG_FILE = "/images/flag/Swahili.png";
+    public static final String AFRIKAANS_FLAG_FILE = "/images/flag/afrikaans.png";
+    public static final String INDONESIA_FLAG_FILE = "/images/flag/indonesia.png";
     
  
 

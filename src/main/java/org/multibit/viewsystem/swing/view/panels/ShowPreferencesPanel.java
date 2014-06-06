@@ -49,7 +49,6 @@ import javax.swing.UIManager.LookAndFeelInfo;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -1391,124 +1390,121 @@ public class ShowPreferencesPanel extends JPanel implements Viewable, Preference
     
     
     private ImageIcon createImageIcon(String text) {
-    	
-    	
-    	if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.1")){
-    		return ImageLoader.createImageIcon(ImageLoader.ENGLISH_FLAG_FILE);}
-    	
-    	else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.2")){
-    		return ImageLoader.createImageIcon(ImageLoader.SPANISH_FLAG_FILE);}
-    	
-    	else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.3")){
-    		return ImageLoader.createImageIcon(ImageLoader.RUSSIAN_FLAG_FILE);}
-    	
-    	else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.4")){
-    		return ImageLoader.createImageIcon(ImageLoader.SWEEDISH_FLAG_FILE);}
-    	
-    	else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.5")){
-    		return ImageLoader.createImageIcon(ImageLoader.NORWAY_FLAG_FILE);}
-    	
-    	else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.6")){
-    		return ImageLoader.createImageIcon(ImageLoader.ITALIAN_FLAG_FILE);}
-    	
-    	else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.7")){
-    		return ImageLoader.createImageIcon(ImageLoader.FRENCH_FLAG_FILE);}
-    	
-    	else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.8")){
-    		return ImageLoader.createImageIcon(ImageLoader.GERMAN_FLAG_FILE);}
-    	
-    	else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.9")){
-    		return ImageLoader.createImageIcon(ImageLoader.PORTUGUESE_FLAG_FILE);}
-    	
-    	else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.10")){
-    		return ImageLoader.createImageIcon(ImageLoader.SHAPE_PENTAGON_ICON_FILE);}
-    	
-    	else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.11")){
-    		return ImageLoader.createImageIcon(ImageLoader.THAI_FLAG_FILE);}
-    	
-    	else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.12")){
-    		return ImageLoader.createImageIcon(ImageLoader.NEDERLANDS_FLAG_FILE);}
-    	
-    	else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.13")){
-    		return ImageLoader.createImageIcon(ImageLoader.CHINEESE_FLAG_FILE);}
-    	
-    	else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.14")){
-    		return ImageLoader.createImageIcon(ImageLoader.JAPANEESE_FLAG_FILE);}
-    	
-    	else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.15")){
-    		return ImageLoader.createImageIcon(ImageLoader.ARABIAN_FLAG_FILE);}
-    	
-    	else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.16")){
-    		return ImageLoader.createImageIcon(ImageLoader.KOREAN_FLAG_FILE);}
-    	
-    	else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.17")){
-    		return ImageLoader.createImageIcon(ImageLoader.LATVIA_FLAG_FILE);}
-    	
-    	else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.18")){
-    		return ImageLoader.createImageIcon(ImageLoader.TURKISH_FLAG_FILE);}
-    	
-    	else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.19")){
-    		return ImageLoader.createImageIcon(ImageLoader.FINLAND_FLAG_FILE);}
-    	
-    	else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.20")){
-    		return ImageLoader.createImageIcon(ImageLoader.POLISH_FLAG_FILE);}
-    	
-    	else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.21")){
-    		return ImageLoader.createImageIcon(ImageLoader.CROATIAN_FLAG_FILE);}
-    	
-    	else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.22")){
-    		return ImageLoader.createImageIcon(ImageLoader.HUNGARY_FLAG_FILE);}
-    	
-    	else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.23")){
-    		return ImageLoader.createImageIcon(ImageLoader.GREEK_FLAG_FILE);}
-    	
-    	else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.24")){
-    		return ImageLoader.createImageIcon(ImageLoader.DENMARK_FLAG_FILE);}
-    	
-    	else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.25")){
-    		return ImageLoader.createImageIcon(ImageLoader.SHAPE_PENTAGON_ICON_FILE);}
-    	
-    	else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.26")){
-    		return ImageLoader.createImageIcon(ImageLoader.FARSI_FLAG_FILE);}
-    	
-    	else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.27")){
-    		return ImageLoader.createImageIcon(ImageLoader.HEBREW_FLAG_FILE);}
-    	
-    	else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.28")){
-    		return ImageLoader.createImageIcon(ImageLoader.SLOVAKIA_FLAG_FILE);}
-    	
-    	else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.29")){
-    		return ImageLoader.createImageIcon(ImageLoader.CZECH_FLAG_FILE);}
-    	
-    	else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.30")){
-    		return ImageLoader.createImageIcon(ImageLoader.SHAPE_PENTAGON_ICON_FILE);}
-    	
-    	else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.31")){
-    		return ImageLoader.createImageIcon(ImageLoader.SLOVENIAN_FLAG_FILE);}
-    	
-    	else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.32")){
-    		return ImageLoader.createImageIcon(ImageLoader.SHAPE_PENTAGON_ICON_FILE);}
-    	
-    	else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.33")){
-    		return ImageLoader.createImageIcon(ImageLoader.ROMANIAN_FLAG_FILE);}
+        
+        
+        if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.1")){
+            return ImageLoader.createImageIcon(ImageLoader.ENGLISH_FLAG_FILE);}
+        
+        else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.2")){
+            return ImageLoader.createImageIcon(ImageLoader.SPANISH_FLAG_FILE);}
+        
+        else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.3")){
+            return ImageLoader.createImageIcon(ImageLoader.RUSSIAN_FLAG_FILE);}
+        
+        else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.4")){
+            return ImageLoader.createImageIcon(ImageLoader.SWEEDISH_FLAG_FILE);}
+        
+        else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.5")){
+            return ImageLoader.createImageIcon(ImageLoader.NORWAY_FLAG_FILE);}
+        
+        else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.6")){
+            return ImageLoader.createImageIcon(ImageLoader.ITALIAN_FLAG_FILE);}
+        
+        else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.7")){
+            return ImageLoader.createImageIcon(ImageLoader.FRENCH_FLAG_FILE);}
+        
+        else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.8")){
+            return ImageLoader.createImageIcon(ImageLoader.GERMAN_FLAG_FILE);}
+        
+        else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.9")){
+            return ImageLoader.createImageIcon(ImageLoader.PORTUGUESE_FLAG_FILE);}
+        
+        else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.10")){
+            return ImageLoader.createImageIcon(ImageLoader.INDIA_FLAG_FILE);}
+        
+        else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.11")){
+            return ImageLoader.createImageIcon(ImageLoader.THAI_FLAG_FILE);}
+        
+        else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.12")){
+            return ImageLoader.createImageIcon(ImageLoader.NEDERLANDS_FLAG_FILE);}
+        
+        else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.13")){
+            return ImageLoader.createImageIcon(ImageLoader.CHINEESE_FLAG_FILE);}
+        
+        else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.14")){
+            return ImageLoader.createImageIcon(ImageLoader.JAPANEESE_FLAG_FILE);}
+        
+        else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.15")){
+            return ImageLoader.createImageIcon(ImageLoader.ARABIAN_FLAG_FILE);}
+        
+        else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.16")){
+            return ImageLoader.createImageIcon(ImageLoader.KOREAN_FLAG_FILE);}
+        
+        else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.17")){
+            return ImageLoader.createImageIcon(ImageLoader.LATVIA_FLAG_FILE);}
+        
+        else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.18")){
+            return ImageLoader.createImageIcon(ImageLoader.TURKISH_FLAG_FILE);}
+        
+        else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.19")){
+            return ImageLoader.createImageIcon(ImageLoader.FINLAND_FLAG_FILE);}
+        
+        else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.20")){
+            return ImageLoader.createImageIcon(ImageLoader.POLISH_FLAG_FILE);}
+        
+        else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.21")){
+            return ImageLoader.createImageIcon(ImageLoader.CROATIAN_FLAG_FILE);}
+        
+        else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.22")){
+            return ImageLoader.createImageIcon(ImageLoader.HUNGARY_FLAG_FILE);}
+        
+        else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.23")){
+            return ImageLoader.createImageIcon(ImageLoader.GREEK_FLAG_FILE);}
+        
+        else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.24")){
+            return ImageLoader.createImageIcon(ImageLoader.DENMARK_FLAG_FILE);}
+        
+        else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.25")){
+            return ImageLoader.createImageIcon(ImageLoader.ESPERANTO_FLAG_FILE);}
+        
+        else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.26")){
+            return ImageLoader.createImageIcon(ImageLoader.FARSI_FLAG_FILE);}
+        
+        else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.27")){
+            return ImageLoader.createImageIcon(ImageLoader.HEBREW_FLAG_FILE);}
+        
+        else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.28")){
+            return ImageLoader.createImageIcon(ImageLoader.SLOVAKIA_FLAG_FILE);}
+        
+        else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.29")){
+            return ImageLoader.createImageIcon(ImageLoader.CZECH_FLAG_FILE);}
+        
+        else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.30")){
+            return ImageLoader.createImageIcon(ImageLoader.INDONESIA_FLAG_FILE);}
+        
+        else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.31")){
+            return ImageLoader.createImageIcon(ImageLoader.SLOVENIAN_FLAG_FILE);}
+        
+        else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.32")){
+            return ImageLoader.createImageIcon(ImageLoader.TAMIL_FLAG_FILE);}
+        
+        else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.33")){
+            return ImageLoader.createImageIcon(ImageLoader.ROMANIAN_FLAG_FILE);}
 
-    	else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.34")){
-    		return ImageLoader.createImageIcon(ImageLoader.SHAPE_PENTAGON_ICON_FILE);}
-    	
-    	else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.35")){
-    		return ImageLoader.createImageIcon(ImageLoader.TAGALOG_FLAG_FILE);}
-    	
-    	else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.36")){
-    		return ImageLoader.createImageIcon(ImageLoader.SHAPE_PENTAGON_ICON_FILE);}
-    	
-    	else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.37")){
-    		return ImageLoader.createImageIcon(ImageLoader.SHAPE_PENTAGON_ICON_FILE);}
-    	
-    	
-    	
-    	
-    	
-    	else return ImageLoader.createImageIcon(ImageLoader.SHAPE_PENTAGON_ICON_FILE);
+        else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.34")){
+            return ImageLoader.createImageIcon(ImageLoader.AFRIKAANS_FLAG_FILE);}
+        
+        else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.35")){
+            return ImageLoader.createImageIcon(ImageLoader.TAGALOG_FLAG_FILE);}
+        
+        else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.36")){
+            return ImageLoader.createImageIcon(ImageLoader.SWAHILI_FLAG_FILE);}
+        
+        else if (text == controller.getLocaliser().getString("showPreferencesPanel.languageCode.37")){
+            return ImageLoader.createImageIcon(ImageLoader.SERBIAN_FLAG_FILE);}
+        
+        
+        else return ImageLoader.createImageIcon(ImageLoader.SHAPE_PENTAGON_ICON_FILE);
     }
     
     
